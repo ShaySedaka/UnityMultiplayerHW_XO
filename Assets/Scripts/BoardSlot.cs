@@ -12,5 +12,10 @@ public class BoardSlot : MonoBehaviour
         GameManager.Instance.OnSlotClicked(_slotNumber);
     }
 
+    private void OnMouseDown()
+    {
+        Debug.Log("Click!");
+        OnSlotClick();
+    }
 }
 
