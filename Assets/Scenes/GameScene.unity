@@ -199,6 +199,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 17426671}
   m_CullTransparentMesh: 1
+--- !u!1 &26172154 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 913272665800942104, guid: 1a37245558fe20d4895bd6accb60031c, type: 3}
+  m_PrefabInstance: {fileID: 4699320953385544822}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &199240195 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6999600432995898364, guid: 1a37245558fe20d4895bd6accb60031c, type: 3}
+  m_PrefabInstance: {fileID: 4699320953385544822}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &262288906 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 623082815259615870, guid: 1a37245558fe20d4895bd6accb60031c, type: 3}
+  m_PrefabInstance: {fileID: 4699320953385544822}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &318563217
 GameObject:
   m_ObjectHideFlags: 0
@@ -333,6 +348,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 318563217}
   m_CullTransparentMesh: 1
+--- !u!1 &465836392 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5409631534142094401, guid: 1a37245558fe20d4895bd6accb60031c, type: 3}
+  m_PrefabInstance: {fileID: 4699320953385544822}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -731,10 +751,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e2a763142cd22b4ab78ffaaa8cda807, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _boardUISlots: []
+  _boardUISlots:
+  - {fileID: 26172154}
+  - {fileID: 1889233237}
+  - {fileID: 1523189679}
+  - {fileID: 199240195}
+  - {fileID: 1223870380}
+  - {fileID: 465836392}
+  - {fileID: 1303095160}
+  - {fileID: 959304692}
+  - {fileID: 262288906}
   _symbolIndicator: {fileID: 799889098}
   _statusLine: {fileID: 1198138017}
   _portToggle: {fileID: 1987435672}
+--- !u!1 &959304692 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5717682470114769562, guid: 1a37245558fe20d4895bd6accb60031c, type: 3}
+  m_PrefabInstance: {fileID: 4699320953385544822}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &981900311
 GameObject:
   m_ObjectHideFlags: 0
@@ -912,10 +946,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1198138015}
   m_CullTransparentMesh: 1
+--- !u!1 &1223870380 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5773636477945341973, guid: 1a37245558fe20d4895bd6accb60031c, type: 3}
+  m_PrefabInstance: {fileID: 4699320953385544822}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1303095160 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 849830775113226018, guid: 1a37245558fe20d4895bd6accb60031c, type: 3}
+  m_PrefabInstance: {fileID: 4699320953385544822}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1441641767 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5890793703804123012, guid: cfdab920598baa042941c3c30ee228eb, type: 3}
   m_PrefabInstance: {fileID: 573019098293233117}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1523189679 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8528418103594405146, guid: 1a37245558fe20d4895bd6accb60031c, type: 3}
+  m_PrefabInstance: {fileID: 4699320953385544822}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1829000437
 GameObject:
@@ -960,6 +1009,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 027b3830dafc2d440884510252f2666d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1889233237 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4338408793899335305, guid: 1a37245558fe20d4895bd6accb60031c, type: 3}
+  m_PrefabInstance: {fileID: 4699320953385544822}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1987435672 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8036282232119812401, guid: cfdab920598baa042941c3c30ee228eb, type: 3}
@@ -1329,6 +1383,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2124681599}
     m_Modifications:
+    - target: {fileID: 3073561543875074320, guid: 1a37245558fe20d4895bd6accb60031c, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3239071151372402643, guid: 1a37245558fe20d4895bd6accb60031c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
