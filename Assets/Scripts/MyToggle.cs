@@ -12,14 +12,17 @@ public class MyToggle : MonoBehaviour
 
     [SerializeField] bool _toggleState;
 
+    public bool ToggleState { get => _toggleState;}
+
     void Start()
     {
-        _toggleState = true;
+        _toggleState = false;
+        OnToggleChange();
     }
 
     private void OnToggleChange()
     {
-        if(_toggleState == true)
+        if(ToggleState == true)
         {
             _imageComponent.sprite = _toggleSateSprite1;
 
