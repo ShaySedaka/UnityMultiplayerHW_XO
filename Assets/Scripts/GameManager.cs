@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum PlayerSign
 {
@@ -42,18 +43,52 @@ public class GameManager : Singleton<GameManager>
         UpdateMySign();
         DetermineState();
 
-
-
     }
 
 
     #region Victory Checks
+
+    private void CheckGameOver()
+    {
+        if(CheckTie())
+        {
+            UIManager.Instance.OnGameOver(PlayerSign.NONE);
+        }
+        else
+        {
+            PlayerSign victoryResult = CheckVictory();
+
+            if (victoryResult != PlayerSign.NONE)
+            {
+                UIManager.Instance.OnGameOver(victoryResult);
+            }
+        }
+    }
+
     private PlayerSign CheckVictory()
     {
         if (CheckVictoryForSign(PlayerSign.X)) return PlayerSign.X;
         else if (CheckVictoryForSign(PlayerSign.O)) return PlayerSign.O;
         else { return PlayerSign.NONE; }
 
+    }
+
+    private bool CheckTie()
+    {
+        if(CheckVictory() != PlayerSign.NONE)
+        {
+            return false;
+        }
+
+        for (int i = 0; i < _gameBoard.Length; i++)
+        {
+            if (_gameBoard[i] == PlayerSign.NONE)
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     private bool CheckVictoryForSign(PlayerSign sign)
@@ -140,11 +175,14 @@ public class GameManager : Singleton<GameManager>
 
     public bool PlaceSignOnBoard(int pos, PlayerSign sign)
     {
-        if(_gameBoard[pos] == PlayerSign.NONE)
+        if (pos >= 0 && pos <= 8)
         {
-            _gameBoard[pos] = sign;
-            UIManager.Instance.PlaceSignInUISlot(pos, sign);
-            return true;
+            if (_gameBoard[pos] == PlayerSign.NONE)
+            {
+                _gameBoard[pos] = sign;
+                UIManager.Instance.PlaceSignInUISlot(pos, sign);
+                return true;
+            }
         }
 
         return false;
@@ -179,6 +217,8 @@ public class GameManager : Singleton<GameManager>
 
     private void swapTurn()
     {
+        CheckGameOver();
+
         if (_activeSign == PlayerSign.X)
         {
             _activeSign = PlayerSign.O;
@@ -188,6 +228,8 @@ public class GameManager : Singleton<GameManager>
         {
             _activeSign = PlayerSign.X;
         }
+
+        UIManager.Instance.SetStatusText("Waiting for " + _activeSign.ToString() + "...");
     }
 
     public void OnSlotClicked(int pos)
@@ -196,14 +238,11 @@ public class GameManager : Singleton<GameManager>
         {
             if (PlaceSignOnBoard(pos, _mySign))
             {
-                //NetworkManager.SendMove(pos,sign);
-
+                NetworkManager.Instance.SendMove(pos);
                 swapTurn();
             }
         }
     }
-
-
 
     public void OnMessageRecieved(int pos)
     {
@@ -214,6 +253,12 @@ public class GameManager : Singleton<GameManager>
                 swapTurn();
             }
         }
+    }
+
+    public void RestartScene()
+    {
+        Scene scene = SceneManager.GetActiveScene(); 
+        SceneManager.LoadScene(scene.name);
     }
 
 }

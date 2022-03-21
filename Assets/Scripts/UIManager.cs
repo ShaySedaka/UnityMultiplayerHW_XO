@@ -10,21 +10,12 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] TextMeshProUGUI _symbolIndicator;
     [SerializeField] TextMeshProUGUI _statusLine;
     [SerializeField] MyToggle _portToggle;
+    [SerializeField] GameObject _gameOverPanel;
+    [SerializeField] TextMeshProUGUI _winningSignText;
+    [SerializeField] GameObject _togglePanel;
+    [SerializeField] GameObject _connectButton;
 
     public MyToggle PortToggle { get => _portToggle;}
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void PlaceSignInUISlot(int pos, PlayerSign sign)
     {
@@ -45,5 +36,27 @@ public class UIManager : Singleton<UIManager>
     public void SetStatusText(string info)
     {
         _statusLine.text = info;
+    }
+
+    public void OnGameOver(PlayerSign sign)
+    {
+        if(sign != PlayerSign.NONE)
+        {
+            _winningSignText.text = sign.ToString() + " WON!";
+        }
+        else
+        {
+            _winningSignText.text = "It's a TIE!";
+        }
+
+        _gameOverPanel.SetActive(true);
+       
+    }
+
+    public void OnConnectPressed()
+    {
+        _togglePanel.SetActive(false);
+        _connectButton.SetActive(false);
+        NetworkManager.Instance.StartConnection();
     }
 }
